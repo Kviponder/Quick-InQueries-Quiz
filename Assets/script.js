@@ -1,8 +1,39 @@
-const hello = "Hello my name is ";
-let name = "Kai ";
-let age = "21.  ";
-let pet = "Bearded Dragon ";
-alert(hello + name + "and I am " + age + "I have a " + pet);
+const quizContainer = document.getElementById('quizContainer')
+
+let quizQuestions = [
+    {
+        question: 'What is JavaScript primarily used for?',
+        options:['Creating dynamic websites', 'Designing user interfaces', 'Building databases', 'Writing server-side code'],
+        answer: 'Creating dynamic websites',
+    },
+    {
+        question: 'Which of the following is a JavaScript data type?',
+        options:['Integer', 'Float', 'Boolean', 'Character'],
+        answer: 'Boolean',
+    },
+    {
+        question: 'What is the result of the following expression: "2" + 2?',
+        options:['"4"', '"22"', '4', '0',],
+        answer: '"22"',
+    },
+    {
+        question: 'What does the keyword "this" refer to in JavaScript?',
+        options:['The current function', 'The global object', 'The object that the function is a method of', 'The object that the function was called on',],
+        answer: 'The object that the function was called on',
+    },
+    {
+        question: 'WWhich of the following statements is true about JavaScript functions?',
+        options:['They must always return a value', 'They can only be declared using the "function" keyword', 'They can be passed as arguments to other functions', 'They cannot access variables declared outside of the function',],
+        answer: 'They can be passed as arguments to other functions',
+    },
+    {
+        question: 'Which of the following methods can be used to add an element to the end of an array?',
+        options:['push()', 'unshift()', 'pop()', 'shift()',],
+        answer: 'push()',
+    }
+]
+
+
 
 /*  Consider below when you start building the timer, this example is for a timer that ends after the selected items are complete or after 15 minutes maybe itll help.    
 Ref below:
