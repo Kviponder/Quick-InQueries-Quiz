@@ -1,0 +1,40 @@
+:root {
+  --black: #2d2727;
+  --grape: #413543;
+  --purple: #8f43ee;
+  --yellow: #f0eb8d;
+}
+
+body {
+  background: repeating-radial-gradient(var(--purple), var(--black));
+  
+}
+
+main {
+  margin: 0, 200;
+  justify-content: center;
+}
+
+
+/*
+
+#quiz-container {
+}
+
+#results-container {
+}
+
+#start-quiz-btn {
+}
+
+#submit-btn
+}
+
+#view-results-btn {
+}
+
+#timer {
+}
+
+#error-message {
+}
