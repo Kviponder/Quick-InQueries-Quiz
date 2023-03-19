@@ -1,14 +1,13 @@
-
-const quizBank = document.getElementById("questionBank");
 const quizContainer = document.getElementById("quizContainer");
 const startButt = document.getElementById("startQuizBtn");
+const submit = document.getElementById("submitBtn");
 const resultsBox = document.getElementById("resultsContainer");
 const resultBtn = document.getElementById("vieResultsBtn");
-const timer = document.getElementById("timer");
+const timerElem = document.getElementById("timer");
 const error = document.getElementById("errorMessage");
+let timeleft = 75;
 
-// make more later for each html id-- update should be all but never know
-// All this is correct
+
 let quizQuestions = [
   {
     question: "What is JavaScript primarily used for?",
@@ -59,11 +58,13 @@ let quizQuestions = [
   },
 ];
 console.log(quizQuestions);
-// Seems correct
+//Creates h2 and div for question and answer
 quizQuestions.forEach(function (question, index) {
   const questionElem = document.createElement("h2");
-  questionElem.textContent =
+  questionElem.textContent = 
+  //index +1 calls each item in the quizQuestions array to display them with a 1-5 order
     "Question " + (index + 1) + " : " + question.question;
+  questionElem.classList.add("question");
 
   const optionsElem = document.createElement("div");
   optionsElem.classList.add("options");
@@ -73,52 +74,82 @@ quizQuestions.forEach(function (question, index) {
     optionElem.textContent = option;
     optionsElem.appendChild(optionElem);
   });
+
   quizContainer.appendChild(questionElem);
   quizContainer.appendChild(optionsElem);
 });
 
-// function getElementByQuestion() {
-//   let question = questionElem((question.textContent = questionElem));
-// }
-
-startButt.addEventListener("click", startQuiz);
-//this function should do the following:
-//Or this function should do some of the following
-//  On start quiz i want startQuizBtn to display as none
-//  Then I want question 1 & a timer to display
-//  On clicking an answer, if correct next question, if 
-//incoreect, time is subtracted from total, and user is left to answer again
-//  if time finishes before all answers, error message 
-//saying "time is up" will display and move to score screen
-//on last question display submit button
-//if finish all before time, then end message, then hide submit button, leave time displaying end time.  
-//Have box to enter highscore, and new start button
-
-function startQuiz() {
-  let startScreenID = document.getElementById("quizBlock");
-  startScreenID.setAttribute("class", "showNone");
-  quizBank.removeAttribute("class");
-
-//above should be correct for thew most part //
-  // ask someone smarter for help my man
-
-
-  //when press start squiz: Timer starts countdown
-  function timerOn() {
-    let secsLeft = (document.getElementById("timer").innerHTML = seconds + "s");
-    timer.setInterval(() => {
-      Attribute("class", "showNone");
-    }, interval);
-  }
-  if (timeleft > 0) {
-    clearInterval();
-    document.getElementById(secsLeft).innerHTML = "";
-  } else {
-    document.getElementById(errorMessage).innerHTML = "Time is up!";
-  }
-  //ref start time in notes
-
-  getElementByQuestion();
+//I want this to create a "page" to use the LearningAssistants words
+//To create an html  element a page for each qustion/answers
+//then on click of answer replace with next question
+function getElementByQuestion() {
+  let question = questionElem((question.textContent = questionElem));
+  
 }
+
+{
+  
+console.log(startButt)
+  //  On start quiz i want startQuizBtn to display as none
+  //  Then I want question 1 & a timer to display
+  startButt.addEventListener("click", startQuiz);
+  function startQuiz() {
+    startButt.classList.add("showNone"); // hide start button
+    submit.classList.remove("showNone"); // show submit button
+    timerElem.classList.remove("showNone"); //Shows timer
+
+    const quizQuestionElem = document.querySelectorAll(".question")[0]; // get first question
+    quizQuestionElem.classList.remove("showNone"); // show first question
+
+    const quizOptionsElem = document.querySelectorAll(".options")[0]; // get first options?
+    quizOptionsElem.classList.remove("showNone"); // show first question
+
+    timerElem.textContent = timeleft; // display timer
+
+    const restQuestions = document.querySelectorAll(".question");
+    for (let i = 1; i < restQuestions.length; i++) {
+      restQuestions[i].classList.add("showNone");
+    }
+    const restOptions = document.querySelectorAll(".options");
+    for (let i = 1; i < restOptions.length; i++) {
+      restOptions[i].classList.add("showNone");
+    }
+    
+    let timerInt = setInterval(timer, 1000);
+    function timer() {
+      let timerSpan = document.getElementById("timer");
+      timeleft=timeleft-1;
+      if (timeleft <= 0) {
+        clearInterval(timerInt);
+        return;
+        timerSpan.textContent = "Time's up!";
+        return;
+
+      }
+      timerSpan.textContent = timerleft + " seconds remaining";
+      console.log(timeleft)
+      quizContainer.insertBefore(timerElem, quizContainer.firstChild);
+      }
+      quizQuestionElem.insertBefore(timerElem, quizQuestionElem.childNodes[0]); // add timer before questions
+      quizContainer.removeChild(error); // hide error message
+    }
+
+    //when press start quiz: Timer starts countdown
+
+    //ref start time in notes
+  }
+
+
 console.log(startQuiz);
 console.log(quizContainer);
+
+// function(s) should do the following:
+//Or this function should do some of the following
+
+//  On clicking an answer, if correct next question, if
+//incorrect, time is subtracted from total, and user is left to answer again
+//  if time finishes before all answers, error message
+//saying "time is up" will display and move to score screen
+//on last question display submit button
+//if finish all before time, then end message, then hide submit button, leave time displaying end time.
+//Have box to enter highscore, and new start button

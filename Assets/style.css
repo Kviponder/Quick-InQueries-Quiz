@@ -32,23 +32,12 @@ h2 {
   margin-bottom: 30;
   margin-bottom: 10px;
 }
-/* 
+
 .showNone {
   display: none;
-} */
+}
 
-/* #quizBlock{
-  background-color: var(--yellow);
-  border: 1px solid var(--grape);
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px var(--black);
-  padding: 20px;
-  margin: 0 auto;
-  height: 300px;
-  width: 80%;
-  max-width: 800px;
-  text-align: center;
-} */
+
 
 #quizContainer {
   background-color: var(--yellow);
@@ -97,8 +86,9 @@ h2 {
   max-width: 800px;
   text-align: center;
 }
-/* 
+
 #startQuizBtn {
+  
 }
 
 #submitBtn {
@@ -106,22 +96,40 @@ h2 {
 
 #viewResultsBtn {
  
-} */
+}
 
 #timer {
   font-family: monospace;
   text-align: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  color: #daf6ff;
-  text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+  position: relative;
+  left: 45%;
+  top: 0%;
+  color: var(--black);
+  text-shadow: 0 0 20px var(--purple), 0 0 20px var(--black);
 }
 .time {
-  letter-spacing: 0.05em;
-  font-size: 80px;
+  letter-spacing: 2px;
+  font-size: 90px;
   padding: 5px 0;
 }
 
-#errorMessage {
+#timerElem {
+  font-family: monospace;
+  text-align: center;
+  position: relative;
+  left: 45%;
+  top: 0%;
+  color: var(--black);
+  text-shadow: 0 0 20px var(--purple), 0 0 20px var(--black);
+
 }
+/* 
+#errorMessage {
+  font-family: monospace;
+  text-align: center;
+  position: relative;
+  left: 45%;
+  top: 0%;
+  color: var(--black);
+  box-shadow: 0 0 20px var(--purple), 0 0 20px var(--black);
+} */
