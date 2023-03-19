@@ -126,13 +126,14 @@ console.log(startButt)
         return;
 
       }
-      timerSpan.textContent = timerleft + " seconds remaining";
+      timerSpan.textContent = timeleft + " seconds remaining";
       console.log(timeleft)
       quizContainer.insertBefore(timerElem, quizContainer.firstChild);
       }
       quizQuestionElem.insertBefore(timerElem, quizQuestionElem.childNodes[0]); // add timer before questions
       quizContainer.removeChild(error); // hide error message
     }
+
 
     //when press start quiz: Timer starts countdown
 
