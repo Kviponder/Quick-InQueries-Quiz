@@ -92,9 +92,15 @@ quizQuestions.forEach(function (question, index) {  //Creates h2 and div for que
 
   const optionsElem = document.createElement("div");
   optionsElem.classList.add("options");
-
   question.options.forEach(function (option) {
     const optionElem = document.createElement("button");
+    optionElem.addEventListener("click", function () {
+      if (option === question.answer) {
+        moveToNextQuestion();
+      } else {
+        timeleft -= 5;
+      }
+    });
     optionElem.textContent = option;
     optionsElem.appendChild(optionElem);
   });
@@ -102,18 +108,18 @@ quizQuestions.forEach(function (question, index) {  //Creates h2 and div for que
   quizContainer.appendChild(questionElem);
   quizContainer.appendChild(optionsElem);
 
-question.options.forEach(function (option){
-const optionElem =document.createElement("button");
-optionElem.textContent = option;
-optionElem.addEventListener("click", function () {
-  if (option === question.answer) {
-    score++;
-    moveToNextQuestion();
-  } else {
-    timeleft -= 10;
-  }
-});
-});
+// question.options.forEach(function (option){
+// const optionElem =document.createElement("button");
+// optionElem.textContent = option;
+// optionElem.addEventListener("click", function () {
+//   if (option === question.answer) {
+//     score++;
+//     moveToNextQuestion();
+//   } else {
+//     timeleft -= 10;
+//   }
+// });
+// });
 });
 
 //I want this to create a "page" to use the LearningAssistants words
