@@ -6,6 +6,8 @@ const resultBtn = document.getElementById("vieResultsBtn");
 const timerElem = document.getElementById("timer");
 const error = document.getElementById("errorMessage");
 let timeleft = 75;
+let currentQuestion = 0;
+let score = 0;
 
 
 let quizQuestions = [
@@ -58,12 +60,34 @@ let quizQuestions = [
   },
 ];
 console.log(quizQuestions);
-//Creates h2 and div for question and answer
-quizQuestions.forEach(function (question, index) {
+
+function showQuestion(index) {
+  const questions = document.querySelectorAll(".question");
+  const options = document.querySelectorAll(".options");
+
+  for (let i = 0; i < questions.length; i++) {
+    questions[i].classList.add("showNone");
+    options[i].classList.add("showNone");
+  }
+
+  questions[index].classList.remove("showNone");
+  options[index].classList.remove("showNone");
+}
+
+function moveToNextQuestion() {
+  if (currentQuestion < quizQuestions.length - 1) {
+    currentQuestion++;
+    showQuestion(currentQuestion);
+  } else {
+    quizContainer.innerHTML = `<h2>Your score is: ${score}/${quizQuestions.length}</h2>`;
+  }
+}
+
+quizQuestions.forEach(function (question, index) {  //Creates h2 and div for question and answer
   const questionElem = document.createElement("h2");
   questionElem.textContent = 
-  //index +1 calls each item in the quizQuestions array to display them with a 1-5 order
-    "Question " + (index + 1) + " : " + question.question;
+    "Question " + (index + 1) + " : " + question.question;   //index +1 calls each item in the quizQuestions array to display them with a 1-5 order
+
   questionElem.classList.add("question");
 
   const optionsElem = document.createElement("div");
@@ -77,6 +101,19 @@ quizQuestions.forEach(function (question, index) {
 
   quizContainer.appendChild(questionElem);
   quizContainer.appendChild(optionsElem);
+
+question.options.forEach(function (option){
+const optionElem =document.createElement("button");
+optionElem.textContent = option;
+optionElem.addEventListener("click", function () {
+  if (option === question.answer) {
+    score++;
+    moveToNextQuestion();
+  } else {
+    timeleft -= 10;
+  }
+});
+});
 });
 
 //I want this to create a "page" to use the LearningAssistants words
@@ -98,27 +135,29 @@ console.log(startButt)
     submit.classList.remove("showNone"); // show submit button
     timerElem.classList.remove("showNone"); //Shows timer
 
-    const quizQuestionElem = document.querySelectorAll(".question")[0]; // get first question
-    quizQuestionElem.classList.remove("showNone"); // show first question
+    showQuestion(currentQuestion);
+//First way of trying delete later
+    // const quizQuestionElem = document.querySelectorAll(".question")[0]; // get first question
+    // quizQuestionElem.classList.remove("showNone"); // show first question
 
-    const quizOptionsElem = document.querySelectorAll(".options")[0]; // get first options?
-    quizOptionsElem.classList.remove("showNone"); // show first question
+    // const quizOptionsElem = document.querySelectorAll(".options")[0]; // get first options?
+    // quizOptionsElem.classList.remove("showNone"); // show first question
 
-    // timerElem.textContent = timeleft; // display timer
+    // // timerElem.textContent = timeleft; // display timer
 
-    const restQuestions = document.querySelectorAll(".question");
-    for (let i = 1; i < restQuestions.length; i++) {
-      restQuestions[i].classList.add("showNone");
-    }
-    const restOptions = document.querySelectorAll(".options");
-    for (let i = 1; i < restOptions.length; i++) {
-      restOptions[i].classList.add("showNone");
-    }
+    // const restQuestions = document.querySelectorAll(".question");
+    // for (let i = 1; i < restQuestions.length; i++) {
+    //   restQuestions[i].classList.add("showNone");
+    // }
+    // const restOptions = document.querySelectorAll(".options");
+    // for (let i = 1; i < restOptions.length; i++) {
+    //   restOptions[i].classList.add("showNone");
+    // }
     
     let timerInt = setInterval(timer, 1000);
     function timer() {
       let timerSpan = document.getElementById("timer");
-      timeleft=timeleft-1;
+      timeleft=timeleft - 1;
       if (timeleft <= 0) {
         clearInterval(timerInt);
         return;
