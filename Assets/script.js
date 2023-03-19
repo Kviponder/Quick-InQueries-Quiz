@@ -104,7 +104,7 @@ console.log(startButt)
     const quizOptionsElem = document.querySelectorAll(".options")[0]; // get first options?
     quizOptionsElem.classList.remove("showNone"); // show first question
 
-    timerElem.textContent = timeleft; // display timer
+    // timerElem.textContent = timeleft; // display timer
 
     const restQuestions = document.querySelectorAll(".question");
     for (let i = 1; i < restQuestions.length; i++) {
