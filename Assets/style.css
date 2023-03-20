@@ -5,6 +5,11 @@
   --yellow: #f0eb8d;
 }
 
+::selection {
+  background-color: var(--black);
+  color: var(--purple);
+}
+
 body {
   background-color: var(--black);
   font-family: monospace, sans-serif;
@@ -44,8 +49,6 @@ h2 {
 .showNone {
   display: none;
 }
-
-
 
 #quizContainer {
   background-color: var(--yellow);
@@ -99,21 +102,19 @@ button:active {
 }
 
 #submitBtn {
-  
 }
 
 #viewResultsBtn {
- 
 }
 
 #timer {
   font-family: monospace;
   text-align: center;
-  position: relative;
-  left: 45%;
-  top: 0%;
+  position: static;
+  /* left: 45%;
+  top: 0%; */
   color: var(--black);
-  text-shadow: 0 0 20px var(--purple), 0 0 20px var(--black);
+  text-shadow: 0 0 10px var(--black), 0 0 10px var(--purple);
 }
 .time {
   letter-spacing: 2px;
@@ -129,7 +130,6 @@ button:active {
   top: 0%;
   color: var(--black);
   text-shadow: 0 0 20px var(--purple), 0 0 20px var(--black);
-
 }
 /* 
 #errorMessage {
@@ -167,7 +167,6 @@ button:active {
     width: 100%;
   }
 }
-
 
 /* Mobile (max-width: 767px) */
 @media only screen and (max-width: 767px) {

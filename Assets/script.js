@@ -5,6 +5,7 @@ const resultsBox = document.getElementById("resultsContainer");
 const resultBtn = document.getElementById("vieResultsBtn");
 const timerElem = document.getElementById("timer");
 const error = document.getElementById("errorMessage");
+
 let timeleft = 75;
 let currentQuestion = 0;
 let score = 0;
@@ -59,7 +60,6 @@ let quizQuestions = [
     answer: "push()",
   },
 ];
-console.log(quizQuestions);
 
 function showQuestion(index) {
   const questions = document.querySelectorAll(".question");
@@ -90,8 +90,7 @@ function moveToNextQuestion() {
 }
 
 quizQuestions.forEach(function (question, index) {
-  //Creates h2 and div for question and answer
-  const questionElem = document.createElement("h2");
+  const questionElem = document.createElement("h2"); //Creates h2 and div for question and answer
   questionElem.textContent =
     "Question " + (index + 1) + " : " + question.question; //index +1 calls each item in the quizQuestions array to display them with a 1-5 order
 
@@ -114,28 +113,16 @@ quizQuestions.forEach(function (question, index) {
 
   quizContainer.appendChild(questionElem);
   quizContainer.appendChild(optionsElem);
-
-  // question.options.forEach(function (option){
-  // const optionElem =document.createElement("button");
-  // optionElem.textContent = option;
-  // optionElem.addEventListener("click", function () {
-  //   if (option === question.answer) {
-  //     score++;
-  //     moveToNextQuestion();
-  //   } else {
-  //     timeleft -= 10;
-  //   }
-  // });
-  // });
 });
 
-//  Then I want question 1 & a timer to display
 startButt.addEventListener("click", startQuiz);
+
 function startQuiz() {
   quizContainer.classList.remove("showNone");
   startButt.classList.add("showNone"); // hide start button
   submit.classList.remove("showNone"); // show submit button
   timerElem.classList.remove("showNone"); //Shows timer
+  error.classList.add("showNone") //hides "Time is Up"
 
   showQuestion(currentQuestion);
 
@@ -156,17 +143,3 @@ function startQuiz() {
   quizQuestionElem.insertBefore(timerElem, quizQuestionElem.childNodes[0]); // add timer before questions
   quizContainer.removeChild(error); // hide error message
 }
-
-console.log(startQuiz);
-console.log(quizContainer);
-
-// function(s) should do the following:
-//Or this function should do some of the following
-
-//  On clicking an answer, if correct next question, if
-//incorrect, time is subtracted from total, and user is left to answer again
-//  if time finishes before all answers, error message
-//saying "time is up" will display and move to score screen
-//on last question display submit button
-//if finish all before time, then end message, then hide submit button, leave time displaying end time.
-//Have box to enter highscore, and new start button
