@@ -51,7 +51,7 @@ let quizQuestions = [
       "Can be passed as arguments to other functions",
       "Cannot access variables declared outside of the function",
     ],
-    answer: "They can be passed as arguments to other functions",
+    answer: "Can be passed as arguments to other functions",
   },
   {
     question:
@@ -140,6 +140,5 @@ function startQuiz() {
     console.log(timeleft);
     quizContainer.insertBefore(timerElem, quizContainer.firstChild);
   }
-  quizQuestionElem.insertBefore(timerElem, quizQuestionElem.childNodes[0]); // add timer before questions
   quizContainer.removeChild(error); // hide error message
 }
