@@ -9,7 +9,6 @@ let timeleft = 75;
 let currentQuestion = 0;
 let score = 0;
 
-
 let quizQuestions = [
   {
     question: "What is JavaScript primarily used for?",
@@ -83,10 +82,11 @@ function moveToNextQuestion() {
   }
 }
 
-quizQuestions.forEach(function (question, index) {  //Creates h2 and div for question and answer
+quizQuestions.forEach(function (question, index) {
+  //Creates h2 and div for question and answer
   const questionElem = document.createElement("h2");
-  questionElem.textContent = 
-    "Question " + (index + 1) + " : " + question.question;   //index +1 calls each item in the quizQuestions array to display them with a 1-5 order
+  questionElem.textContent =
+    "Question " + (index + 1) + " : " + question.question; //index +1 calls each item in the quizQuestions array to display them with a 1-5 order
 
   questionElem.classList.add("question");
 
@@ -108,18 +108,18 @@ quizQuestions.forEach(function (question, index) {  //Creates h2 and div for que
   quizContainer.appendChild(questionElem);
   quizContainer.appendChild(optionsElem);
 
-// question.options.forEach(function (option){
-// const optionElem =document.createElement("button");
-// optionElem.textContent = option;
-// optionElem.addEventListener("click", function () {
-//   if (option === question.answer) {
-//     score++;
-//     moveToNextQuestion();
-//   } else {
-//     timeleft -= 10;
-//   }
-// });
-// });
+  // question.options.forEach(function (option){
+  // const optionElem =document.createElement("button");
+  // optionElem.textContent = option;
+  // optionElem.addEventListener("click", function () {
+  //   if (option === question.answer) {
+  //     score++;
+  //     moveToNextQuestion();
+  //   } else {
+  //     timeleft -= 10;
+  //   }
+  // });
+  // });
 });
 
 //I want this to create a "page" to use the LearningAssistants words
@@ -127,22 +127,21 @@ quizQuestions.forEach(function (question, index) {  //Creates h2 and div for que
 //then on click of answer replace with next question
 function getElementByQuestion() {
   let question = questionElem((question.textContent = questionElem));
-  
 }
 
 {
-  
-console.log(startButt)
+  // console.log(startButt);
   //  On start quiz i want startQuizBtn to display as none
   //  Then I want question 1 & a timer to display
   startButt.addEventListener("click", startQuiz);
   function startQuiz() {
+    quizContainer.classList.remove("showNone");
     startButt.classList.add("showNone"); // hide start button
     submit.classList.remove("showNone"); // show submit button
     timerElem.classList.remove("showNone"); //Shows timer
 
     showQuestion(currentQuestion);
-//First way of trying delete later
+    //First way of trying delete later
     // const quizQuestionElem = document.querySelectorAll(".question")[0]; // get first question
     // quizQuestionElem.classList.remove("showNone"); // show first question
 
@@ -159,32 +158,29 @@ console.log(startButt)
     // for (let i = 1; i < restOptions.length; i++) {
     //   restOptions[i].classList.add("showNone");
     // }
-    
+
     let timerInt = setInterval(timer, 1000);
     function timer() {
       let timerSpan = document.getElementById("timer");
-      timeleft=timeleft - 1;
+      timeleft = timeleft - 1;
       if (timeleft <= 0) {
         clearInterval(timerInt);
         return;
         timerSpan.textContent = "Time's up!";
         return;
-
       }
       timerSpan.textContent = timeleft + " seconds remaining";
-      console.log(timeleft)
+      console.log(timeleft);
       quizContainer.insertBefore(timerElem, quizContainer.firstChild);
-      }
-      quizQuestionElem.insertBefore(timerElem, quizQuestionElem.childNodes[0]); // add timer before questions
-      quizContainer.removeChild(error); // hide error message
     }
-
-
-    //when press start quiz: Timer starts countdown
-
-    //ref start time in notes
+    quizQuestionElem.insertBefore(timerElem, quizQuestionElem.childNodes[0]); // add timer before questions
+    quizContainer.removeChild(error); // hide error message
   }
 
+  //when press start quiz: Timer starts countdown
+
+  //ref start time in notes
+}
 
 console.log(startQuiz);
 console.log(quizContainer);
