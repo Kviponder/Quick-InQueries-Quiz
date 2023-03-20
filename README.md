@@ -3,17 +3,22 @@
 
 ### Done
 *   Add questions and answers: array and added into html
+*   Need to make clicking answer a: Move to next question B:  OnWrong subtract time and stay on question
 *   css hover for answers?: change background to be     darker or somethin 
-### in progress
 *   make button start test on click
 *   styling can be minimal but have fun
-
-### Needs Done
-*   Need to make clicking answer a: Move to next question B:  OnWrong subtract time and stay on question
-*   Need functional alert for when time is up or test is over 
-*   Need a functional scoreboard, where people can enter score,
 *   add timer, have per quiz? 
 *   have a way to calculate score
+### in progress
+*   Need a functional scoreboard, where people can enter score,
+
+
+### Needs Done
+
+*   Need functional alert for when time is up or test is over 
+
+
+
 ### ==============================================================================
 
 ##  To satisfy the user story and acceptance criteria, the quiz interface would need :

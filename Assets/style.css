@@ -52,13 +52,14 @@ h2 {
 
 #quizContainer {
   background-color: var(--yellow);
-
+  top: 25%;
   padding: 20px;
   margin: 0 auto;
   height: 70%;
   width: 80%;
   max-width: 800px;
   text-align: center;
+  
 }
 
 button {
@@ -143,6 +144,28 @@ button:active {
   color: var(--black);
   text-shadow: 0 0 20px var(--purple), 0 0 20px var(--black);
 }
+#scoreBox {
+  position: static;
+  background-color: var(--yellow);
+  border: 1px solid var(--grape);
+  border-left: 15px solid var(--black);
+  border-bottom: 12px solid var(--purple);
+  border-radius: 0px 9px 9px 0px;
+  padding: 10px;
+  width: auto;
+}
+
+input {
+  margin-bottom: 2px;
+  background-color: var(--grape);
+  color: var(--yellow);
+  border-radius: 0px 5px 5px 0px;
+}
+
+input::selection {
+  background-color: var(--black);
+  color: lawngreen;
+}
 /* 
 #errorMessage {
   font-family: monospace;
@@ -178,7 +201,13 @@ button:active {
   #resultsContainer {
     width: 100%;
   }
-  
+
+  #scoreBox {
+    font-size: 14px;
+    width: 100%;
+    right: 0;
+    top: 0;
+  }
 }
 
 /* Mobile (max-width: 767px) */
@@ -205,6 +234,13 @@ button:active {
   #timer {
     position: static;
   }
+
+  #scoreBox {
+    font-size: 16px;
+    width: 250px;
+    right: 20px;
+    top: 20px;
+  }
 }
 
 /* Tablet (min-width: 768px) and (max-width: 991px) */
@@ -228,6 +264,13 @@ button:active {
   #resultsContainer {
     width: 90%;
   }
+
+  #scoreBox {
+  font-size: 18px;
+    width: 300px;
+    right: 30px;
+    top: 30px;
+  }
 }
 
 /* Desktop (min-width: 992px) */
@@ -250,5 +293,12 @@ button:active {
 
   #resultsContainer {
     width: 80%;
+  }
+
+  #scoreBox {
+    font-size: 20px;
+    width: 250px;
+    right: 40px;
+    top: 40px;
   }
 }

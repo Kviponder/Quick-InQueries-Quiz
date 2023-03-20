@@ -122,7 +122,7 @@ function startQuiz() {
   startButt.classList.add("showNone"); // hide start button
   submit.classList.remove("showNone"); // show submit button
   timerElem.classList.remove("showNone"); //Shows timer
-  error.classList.add("showNone") //hides "Time is Up"
+  error.classList.add("showNone"); //hides "Time is Up"
 
   showQuestion(currentQuestion);
 
@@ -142,3 +142,54 @@ function startQuiz() {
   }
   quizContainer.removeChild(error); // hide error message
 }
+
+const scoreBox = document.getElementById("scoreBox");
+
+//make with array when can, quick fix lol
+const scoreboard = `
+    <h2>Score Board</h2>
+    <form id="scoreForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="score">Score:</label>
+        <input type="number" id="score" name="score" required>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="scoreList">
+        <h3>Scores:</h3>
+        <ul id="scores"></ul>
+    </div>
+`;
+
+scoreBox.innerHTML = scoreboard;
+
+const scoreForm = document.getElementById("scoreForm");
+const scoreList = document.getElementById("scores");
+
+function loadScores() {
+  const storedScores = localStorage.getItem("scores");
+  if (storedScores) {
+    const scores = JSON.parse(storedScores);
+    scores.forEach((score) => {
+      const li = document.createElement("li");
+      li.textContent = `${score.name}: ${score.score}`;
+      scoreList.appendChild(li);
+    });
+  }
+}
+
+loadScores();
+
+scoreForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const name = document.getElementById("name").value;
+  const score = document.getElementById("score").value;
+
+  const li = document.createElement("li");
+  li.textContent = `${name}: ${score}`;
+  scoreList.appendChild(li);
+
+  scoreForm.reset();
+});
+
+console.log(score.scoreForm);
