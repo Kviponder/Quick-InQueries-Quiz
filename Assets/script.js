@@ -2,7 +2,7 @@ const quizContainer = document.getElementById("quizContainer");
 const startButt = document.getElementById("startQuizBtn");
 const submit = document.getElementById("submitBtn");
 const resultsBox = document.getElementById("resultsContainer");
-const resultBtn = document.getElementById("viewResultsBtn");
+const resultBtn = document.getElementById("viwResultsBtn");
 const timerElem = document.getElementById("timer");
 const error = document.getElementById("errorMessage");
 
@@ -44,12 +44,12 @@ let quizQuestions = [
   },
   {
     question:
-      "Which of the following statements is true about JavaScript functions?",
+      "Which of the following statements is true about JavaScript functions? They:",
     options: [
-      "They must always return a value",
-      'They can only be declared using the "function" keyword',
-      "They can be passed as arguments to other functions",
-      "They cannot access variables declared outside of the function",
+      "Must always return a value",
+      'Can only be declared using the "function" keyword',
+      "Can be passed as arguments to other functions",
+      "Cannot access variables declared outside of the function",
     ],
     answer: "They can be passed as arguments to other functions",
   },
@@ -140,5 +140,6 @@ function startQuiz() {
     console.log(timeleft);
     quizContainer.insertBefore(timerElem, quizContainer.firstChild);
   }
+  quizQuestionElem.insertBefore(timerElem, quizQuestionElem.childNodes[0]); // add timer before questions
   quizContainer.removeChild(error); // hide error message
 }

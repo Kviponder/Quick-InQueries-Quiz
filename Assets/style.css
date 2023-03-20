@@ -101,6 +101,18 @@ button:active {
   height: 50px;
 }
 
+.options.question {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.options button {
+  height: auto;
+  width: 45%;
+  margin-bottom: 10px;
+}
+
 #submitBtn {
 }
 
@@ -110,9 +122,7 @@ button:active {
 #timer {
   font-family: monospace;
   text-align: center;
-  position: static;
-  /* left: 45%;
-  top: 0%; */
+  position: absolute;
   color: var(--black);
   text-shadow: 0 0 10px var(--black), 0 0 10px var(--purple);
 }
