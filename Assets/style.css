@@ -141,7 +141,9 @@ button:active {
   color: var(--black);
   box-shadow: 0 0 20px var(--purple), 0 0 20px var(--black);
 } */
+
 /* Media Queries */
+
 /* Extra small devices (min-width: 300px) */
 @media only screen and (min-width: 300px) {
   body {

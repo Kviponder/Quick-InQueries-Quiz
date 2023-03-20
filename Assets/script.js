@@ -8,6 +8,7 @@ const error = document.getElementById("errorMessage");
 let timeleft = 75;
 let currentQuestion = 0;
 let score = 0;
+let timerInt;
 
 let quizQuestions = [
   {
@@ -78,7 +79,13 @@ function moveToNextQuestion() {
     currentQuestion++;
     showQuestion(currentQuestion);
   } else {
-    quizContainer.innerHTML = `<h2>Your score is: ${score}/${quizQuestions.length}</h2>`;
+    clearInterval(timerInt);
+    const scoreElem = document.createElement("h2");
+    scoreElem.textContent = `Your score is: ${timeleft} seconds`;
+    while (quizContainer.firstChild) {
+      quizContainer.removeChild(quizContainer.firstChild);
+    }
+    quizContainer.appendChild(scoreElem);
   }
 }
 
@@ -122,64 +129,32 @@ quizQuestions.forEach(function (question, index) {
   // });
 });
 
-//I want this to create a "page" to use the LearningAssistants words
-//To create an html  element a page for each qustion/answers
-//then on click of answer replace with next question
-function getElementByQuestion() {
-  let question = questionElem((question.textContent = questionElem));
-}
+//  Then I want question 1 & a timer to display
+startButt.addEventListener("click", startQuiz);
+function startQuiz() {
+  quizContainer.classList.remove("showNone");
+  startButt.classList.add("showNone"); // hide start button
+  submit.classList.remove("showNone"); // show submit button
+  timerElem.classList.remove("showNone"); //Shows timer
 
-{
-  // console.log(startButt);
-  //  On start quiz i want startQuizBtn to display as none
-  //  Then I want question 1 & a timer to display
-  startButt.addEventListener("click", startQuiz);
-  function startQuiz() {
-    quizContainer.classList.remove("showNone");
-    startButt.classList.add("showNone"); // hide start button
-    submit.classList.remove("showNone"); // show submit button
-    timerElem.classList.remove("showNone"); //Shows timer
+  showQuestion(currentQuestion);
 
-    showQuestion(currentQuestion);
-    //First way of trying delete later
-    // const quizQuestionElem = document.querySelectorAll(".question")[0]; // get first question
-    // quizQuestionElem.classList.remove("showNone"); // show first question
-
-    // const quizOptionsElem = document.querySelectorAll(".options")[0]; // get first options?
-    // quizOptionsElem.classList.remove("showNone"); // show first question
-
-    // // timerElem.textContent = timeleft; // display timer
-
-    // const restQuestions = document.querySelectorAll(".question");
-    // for (let i = 1; i < restQuestions.length; i++) {
-    //   restQuestions[i].classList.add("showNone");
-    // }
-    // const restOptions = document.querySelectorAll(".options");
-    // for (let i = 1; i < restOptions.length; i++) {
-    //   restOptions[i].classList.add("showNone");
-    // }
-
-    let timerInt = setInterval(timer, 1000);
-    function timer() {
-      let timerSpan = document.getElementById("timer");
-      timeleft = timeleft - 1;
-      if (timeleft <= 0) {
-        clearInterval(timerInt);
-        return;
-        timerSpan.textContent = "Time's up!";
-        return;
-      }
-      timerSpan.textContent = timeleft + " seconds remaining";
-      console.log(timeleft);
-      quizContainer.insertBefore(timerElem, quizContainer.firstChild);
+  timerInt = setInterval(timer, 1000);
+  function timer() {
+    let timerSpan = document.getElementById("timer");
+    timeleft = timeleft - 1;
+    if (timeleft <= 0) {
+      clearInterval(timerInt);
+      return;
+      timerSpan.textContent = "Time's up!";
+      return;
     }
-    quizQuestionElem.insertBefore(timerElem, quizQuestionElem.childNodes[0]); // add timer before questions
-    quizContainer.removeChild(error); // hide error message
+    timerSpan.textContent = timeleft + " seconds remaining";
+    console.log(timeleft);
+    quizContainer.insertBefore(timerElem, quizContainer.firstChild);
   }
-
-  //when press start quiz: Timer starts countdown
-
-  //ref start time in notes
+  quizQuestionElem.insertBefore(timerElem, quizQuestionElem.childNodes[0]); // add timer before questions
+  quizContainer.removeChild(error); // hide error message
 }
 
 console.log(startQuiz);

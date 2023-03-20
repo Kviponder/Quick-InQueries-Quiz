@@ -1,4 +1,25 @@
+## Question attempts
+//First way of trying delete later
+    // const quizQuestionElem = document.querySelectorAll(".question")[0]; // get first question
+    // quizQuestionElem.classList.remove("showNone"); // show first question
+
+    // const quizOptionsElem = document.querySelectorAll(".options")[0]; // get first options?
+    // quizOptionsElem.classList.remove("showNone"); // show first question
+
+    // // timerElem.textContent = timeleft; // display timer
+
+    // const restQuestions = document.querySelectorAll(".question");
+    // for (let i = 1; i < restQuestions.length; i++) {
+    //   restQuestions[i].classList.add("showNone");
+    // }
+    // const restOptions = document.querySelectorAll(".options");
+    // for (let i = 1; i < restOptions.length; i++) {
+    //   restOptions[i].classList.add("showNone");
+    // }
+
 ## Timer Attempts
+
+
 
 function timerOn() {
     let secsLeft = (document.getElementById("timer").innerHTML = seconds + "s");
