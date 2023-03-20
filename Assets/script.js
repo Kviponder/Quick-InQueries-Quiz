@@ -62,6 +62,8 @@ let quizQuestions = [
     answer: "push()",
   },
 ];
+
+
 // Function to show a question at the given index
 function showQuestion(index) {
   const questions = document.querySelectorAll(".question");
@@ -237,6 +239,8 @@ function addElement() {
   scoreListVar.appendChild(scoreList);
 
   function displayScores() {
+    const scoreList = document.createElement("ul");
+    scoreListVar.appendChild(scoreList);
     scoreList.innerHTML = "";
     scores.forEach(({name, score}) => {
       const listItem = document.createElement("li");
@@ -255,11 +259,11 @@ function loadScores() {
     scores.forEach((score) => {
       const li = document.createElement("li");
       li.textContent = `${score.name}: ${score.score}`;
-      scoreList.appendChild(li);
     });
   }
 }
 loadScores();
 
 console.log(score.scoreForm);
+
 
