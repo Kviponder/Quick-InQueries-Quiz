@@ -94,7 +94,6 @@ button:active {
 }
 
 #startQuizBtn {
-  margin-top: 20%;
   width: 150px;
   height: 50px;
 }
@@ -142,3 +141,97 @@ button:active {
   color: var(--black);
   box-shadow: 0 0 20px var(--purple), 0 0 20px var(--black);
 } */
+/* Media Queries */
+/* Extra small devices (min-width: 300px) */
+@media only screen and (min-width: 300px) {
+  body {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  main {
+    max-width: 100%;
+    padding: 10px;
+    height: auto;
+  }
+
+  #quizContainer {
+    height: auto;
+    width: 100%;
+    padding: 10px;
+  }
+
+  #resultsContainer {
+    width: 100%;
+  }
+}
+
+
+/* Mobile (max-width: 767px) */
+@media only screen and (max-width: 767px) {
+  body {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  main {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  #quizContainer {
+    height: auto;
+    width: 100%;
+    padding: 10px;
+  }
+
+  #resultsContainer {
+    width: 100%;
+  }
+}
+
+/* Tablet (min-width: 768px) and (max-width: 991px) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  body {
+    margin-top: 150px;
+    margin-bottom: 150px;
+  }
+
+  main {
+    max-width: 80%;
+    height: 250px;
+    padding: 25px;
+  }
+
+  #quizContainer {
+    height: auto;
+    width: 90%;
+  }
+
+  #resultsContainer {
+    width: 90%;
+  }
+}
+
+/* Desktop (min-width: 992px) */
+@media only screen and (min-width: 992px) {
+  body {
+    margin-top: 200px;
+    margin-bottom: 200px;
+  }
+
+  main {
+    height: 300px;
+    max-width: 700px;
+    padding: 30px;
+  }
+
+  #quizContainer {
+    height: 70%;
+    width: 80%;
+  }
+
+  #resultsContainer {
+    width: 80%;
+  }
+}
