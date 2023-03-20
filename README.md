@@ -1,44 +1,34 @@
-# Quick-InQueries-Quiz To-do
-### ==============================================================================
+# JavaScript Fundamentals Quiz: Web API Edition
 
-### Done
-*   Add questions and answers: array and added into html
-*   Need to make clicking answer a: Move to next question B:  OnWrong subtract time and stay on question
-*   css hover for answers?: change background to be     darker or somethin 
-*   make button start test on click
-*   styling can be minimal but have fun
-*   add timer, have per quiz? 
-*   have a way to calculate score
-### in progress
-*   Need a functional scoreboard, where people can enter score,
+    This repository contains a timed quiz application focused on JavaScript fundamentals, with a particular emphasis on Web APIs. Designed for coding boot camp students, this quiz allows users to gauge their progress compared to their peers by storing and displaying high scores.
 
+##   Table of Contents
 
-### Needs Done
+1. User Story
+2. Features
+3. Acceptance Criteria
+4. Installation
+5. License
 
-*   Need functional alert for when time is up or test is over 
+## User Story
 
+    As a coding boot camp student, I want to take a timed quiz on JavaScript fundamentals that stores high scores so that I can gauge my progress compared to my peers.
 
+## Features
 
-### ==============================================================================
+    Timed quiz with questions covering JavaScript fundamentals and Web APIs
+    High score storage for comparing progress with peers
+    Timer countdown with a time penalty for incorrect answers
+        Saving initials and score upon completion of the quiz
+## Acceptance Criteria
 
-##  To satisfy the user story and acceptance criteria, the quiz interface would need :
+    The user starts the quiz by clicking the "start" button.
+    A timer begins counting down, and the user is presented with a question.
+    The user answers the question and is then presented with another question.
+    If the user answers a question incorrectly, time is subtracted from the timer.
+    The quiz ends when all questions have been answered or the timer reaches zero.
+    When the quiz is over, the user can save their initials and score
 
-### Overall Layout
-    *   The quiz interface should be centered on the page and have appropriate margins and padding.
-    *   The interface should have a clean, modern design that is easy to read and navigate.
-    *   The Initial screen should display the start button, on start should display first question/answers, timer, and submit button
-### Buttons
-    * The Start Quiz, Submit Answers, and View Results buttons should be styled with appropriate colors and borders.
-    * Hover and active states should be clearly indicated so users know when they are interacting with the buttons.
-### Timer
-    *   The timer should be prominently displayed and easily readable.
-    
-### Question and Answer Options
-    *   Each question should be clearly labeled and have appropriate spacing and margins.
-    *   The answer options should be clearly labeled and styled to make it easy for users to select their answer.
-    *   The correct answer should be clearly indicated after the user selects an answer.
-### Game Over Screen
-    *   After the quiz is over, the user should be presented with a screen that allows them to enter their initials and see their score.
-    *   The screen should have a clean and modern design that is easy to read and navigate.
+## License
 
-### ==================================================================================
+This project is licensed under the MIT License.

@@ -5,12 +5,14 @@ const resultsBox = document.getElementById("resultsContainer");
 const resultBtn = document.getElementById("viewResultsBtn");
 const timerElem = document.getElementById("timer");
 const error = document.getElementById("errorMessage");
+const scoreBox = document.getElementById("scoreBox");
 
 let timeleft = 75;
 let currentQuestion = 0;
 let score = 0;
 let timerInt;
 
+// Define an array of quiz questions, options, and correct answers
 let quizQuestions = [
   {
     question: "What is JavaScript primarily used for?",
@@ -60,7 +62,7 @@ let quizQuestions = [
     answer: "push()",
   },
 ];
-
+// Function to show a question at the given index
 function showQuestion(index) {
   const questions = document.querySelectorAll(".question");
   const options = document.querySelectorAll(".options");
@@ -73,22 +75,28 @@ function showQuestion(index) {
   questions[index].classList.remove("showNone");
   options[index].classList.remove("showNone");
 }
-
+// Function to move to the next question or end the game
 function moveToNextQuestion() {
   if (currentQuestion < quizQuestions.length - 1) {
     currentQuestion++;
     showQuestion(currentQuestion);
   } else {
-    clearInterval(timerInt);
+    endGame();
+}
+}
+// Function to end the game, display the score, and clean up the UI
+function endGame() {
     const scoreElem = document.createElement("h2");
     scoreElem.textContent = `Your score is: ${timeleft} seconds`;
     while (quizContainer.firstChild) {
       quizContainer.removeChild(quizContainer.firstChild);
     }
-    quizContainer.appendChild(scoreElem);
+    quizContainer.insertBefore(scoreElem, timerElem.nextSibling);
+    timerElem.textContent = "Time's Up!"
+    timeleft = -1;
   }
-}
 
+// Create the quiz UI elements for each question
 quizQuestions.forEach(function (question, index) {
   const questionElem = document.createElement("h2"); //Creates h2 and div for question and answer
   questionElem.textContent =
@@ -115,8 +123,10 @@ quizQuestions.forEach(function (question, index) {
   quizContainer.appendChild(optionsElem);
 });
 
+// Add event listener to start the quiz when the start button is clicked
 startButt.addEventListener("click", startQuiz);
 
+// Function to start the quiz, show the first question, and start the time
 function startQuiz() {
   quizContainer.classList.remove("showNone");
   startButt.classList.add("showNone"); // hide start button
@@ -130,41 +140,113 @@ function startQuiz() {
   function timer() {
     let timerSpan = document.getElementById("timer");
     timeleft = timeleft - 1;
-    if (timeleft <= 0) {
-      clearInterval(timerInt);
-      return;
-      timerSpan.textContent = "Time's up!";
-      return;
+    if (timeleft < 0) {
+      timeleft = 0;
     }
     timerSpan.textContent = timeleft + " seconds remaining";
     console.log(timeleft);
     quizContainer.insertBefore(timerElem, quizContainer.firstChild);
+    if(timeleft <= 0) {
+      clearInterval(timerInt);
+      endGame();
+      timerSpan.textContent = "Time's up!";
+    }
+    
   }
   quizContainer.removeChild(error); // hide error message
 }
 
-const scoreBox = document.getElementById("scoreBox");
+// Function to create and display the score board on page load
+document.body.onload = addElement;
 
-//make with array when can, quick fix lol
-const scoreboard = `
-    <h2>Score Board</h2>
-    <form id="scoreForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="score">Score:</label>
-        <input type="number" id="score" name="score" required>
-        <button type="submit">Submit</button>
-    </form>
-    <div id="scoreList">
-        <h3>Scores:</h3>
-        <ul id="scores"></ul>
-    </div>
-`;
+function addElement() {
+  //creates a div element then adds before main, which is scoreAbove
+  const scoreBoard = document.createElement("div");
+  scoreBoard.setAttribute("id", "scoreBox");
 
-scoreBox.innerHTML = scoreboard;
+  const scoreAbove = document.getElementById("main");
+  document.body.insertBefore(scoreBoard, scoreAbove); //insert before puts the scores above the quiz
 
-const scoreForm = document.getElementById("scoreForm");
-const scoreList = document.getElementById("scores");
+  const scoreHead = document.createElement("h2"); //Creates heading
+  scoreHead.textContent = "Score Board";
+  scoreBoard.appendChild(scoreHead);
+
+  const scoreForm = document.createElement("form"); //adds form
+  scoreForm.setAttribute("id", "scoreForm"); // sets the id
+  scoreBoard.appendChild(scoreForm);
+
+  const nameLab = document.createElement("label");
+  nameLab.setAttribute("id", "text");
+  nameLab.textContent = "Name: ";
+  scoreBoard.appendChild(nameLab);
+
+  const nameInp = document.createElement("input");
+  nameInp.setAttribute("type", "text");
+  nameInp.setAttribute("name", "name");
+  scoreBoard.appendChild(nameInp);
+
+  const scoreLab = document.createElement("label");
+  scoreLab.setAttribute("id", "text");
+  scoreLab.textContent = "Score: ";
+  scoreBoard.appendChild(scoreLab);
+
+  const scoreInp = document.createElement("input");
+  scoreInp.setAttribute("type", "text");
+  scoreInp.setAttribute("type", "number");
+  scoreInp.setAttribute("id", "score");
+  scoreInp.setAttribute("name", "score");
+  scoreBoard.appendChild(scoreInp);
+
+  const scoreBtn = document.createElement("button");
+  scoreBtn.setAttribute("type", "submit");
+  scoreBtn.textContent = "Enter Score";
+  scoreBoard.appendChild(scoreBtn);
+  scoreBtn.addEventListener("click", submitScore);
+  // Function to submit the score to the score board
+  function submitScore(event) {
+    event.preventDefault();
+
+    const name = nameInp.value;
+    const score = scoreInp.value;
+
+    if ((name === "" || score, "")) {
+      alert("Please enter both a Name and Score");
+      return;
+    }
+
+    scores.push({ name, score });
+    localStorage.setItem("scores", JSON.stringify(scores));
+    displayScores();
+
+    console.log("Name:", name, "Score:", score);
+
+    nameInp.value = "";
+    scoreInp.value = "";
+  }
+  const scores = JSON.parse(localStorage.getItem("scores")) || [];
+
+  const scoreListVar = document.createElement("div");
+  scoreListVar.setAttribute("id", "scoreList");
+  scoreBoard.appendChild(scoreListVar);
+
+  const scoreListHead = document.createElement("h3");
+  scoreListHead.textContent = "scores: ";
+  scoreListVar.appendChild(scoreListHead);
+
+  const scoreList = document.createElement("ul");
+  scoreListVar.appendChild(scoreList);
+
+  function displayScores() {
+    scoreList.innerHTML = "";
+    scores.forEach(({name, score}) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = `${name}: ${score}`
+      scoreList.appendChild(listItem);
+    });
+  }
+  displayScores();
+};
+// Function to load and display scores from local storage
 
 function loadScores() {
   const storedScores = localStorage.getItem("scores");
@@ -177,19 +259,7 @@ function loadScores() {
     });
   }
 }
-
 loadScores();
 
-scoreForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-  const name = document.getElementById("name").value;
-  const score = document.getElementById("score").value;
-
-  const li = document.createElement("li");
-  li.textContent = `${name}: ${score}`;
-  scoreList.appendChild(li);
-
-  scoreForm.reset();
-});
-
 console.log(score.scoreForm);
+
