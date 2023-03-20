@@ -2,7 +2,7 @@ const quizContainer = document.getElementById("quizContainer");
 const startButt = document.getElementById("startQuizBtn");
 const submit = document.getElementById("submitBtn");
 const resultsBox = document.getElementById("resultsContainer");
-const resultBtn = document.getElementById("viwResultsBtn");
+const resultBtn = document.getElementById("viewResultsBtn");
 const timerElem = document.getElementById("timer");
 const error = document.getElementById("errorMessage");
 
