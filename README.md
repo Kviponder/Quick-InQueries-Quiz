@@ -3,12 +3,19 @@
     This repository contains a timed quiz application focused on JavaScript fundamentals, with a particular emphasis on Web APIs. Designed for coding boot camp students, this quiz allows users to gauge their progress compared to their peers by storing and displaying high scores.
 
 ##   Table of Contents
+1. Links
+2. User Story
+3. Features
+4. Acceptance Criteria
+5. Installation
+6. License
 
-1. User Story
-2. Features
-3. Acceptance Criteria
-4. Installation
-5. License
+## Links
+    Repository:
+        https://github.com/Kviponder/Quick-InQueries-Quiz
+
+    Live Site:
+        https://kviponder.github.io/Quick-InQueries-Quiz/
 
 ## User Story
 

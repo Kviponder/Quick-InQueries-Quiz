@@ -140,7 +140,7 @@ input::selection {
 #timer {
   font-family: monospace;
   text-align: center;
-  position: absolute;
+  position: static;
   /* left: 45%;
   top: 0%; */
   color: var(--black);

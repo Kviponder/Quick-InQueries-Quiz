@@ -132,7 +132,6 @@ startButt.addEventListener("click", startQuiz);
 function startQuiz() {
   quizContainer.classList.remove("showNone");
   startButt.classList.add("showNone"); // hide start button
-  submit.classList.remove("showNone"); // show submit button
   timerElem.classList.remove("showNone"); //Shows timer
   error.classList.add("showNone"); //hides "Time is Up"
 
@@ -146,7 +145,6 @@ function startQuiz() {
       timeleft = 0;
     }
     timerSpan.textContent = timeleft + " seconds remaining";
-    console.log(timeleft);
     quizContainer.insertBefore(timerElem, quizContainer.firstChild);
     if(timeleft <= 0) {
       clearInterval(timerInt);
