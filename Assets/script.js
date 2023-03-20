@@ -2,7 +2,7 @@ const quizContainer = document.getElementById("quizContainer");
 const startButt = document.getElementById("startQuizBtn");
 const submit = document.getElementById("submitBtn");
 const resultsBox = document.getElementById("resultsContainer");
-const resultBtn = document.getElementById("vieResultsBtn");
+const resultBtn = document.getElementById("viewResultsBtn");
 const timerElem = document.getElementById("timer");
 const error = document.getElementById("errorMessage");
 
@@ -140,6 +140,5 @@ function startQuiz() {
     console.log(timeleft);
     quizContainer.insertBefore(timerElem, quizContainer.firstChild);
   }
-  quizQuestionElem.insertBefore(timerElem, quizQuestionElem.childNodes[0]); // add timer before questions
   quizContainer.removeChild(error); // hide error message
 }
