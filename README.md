@@ -9,6 +9,7 @@
 4. Acceptance Criteria
 5. Installation
 6. License
+7. Screenshot
 
 ## Links
     Repository:
@@ -40,3 +41,6 @@
 ## License
 
 This project is licensed under the MIT License.
+
+## Screenshot
+![Screenhot of Project](Assets/Screenshots/Image1.png)
